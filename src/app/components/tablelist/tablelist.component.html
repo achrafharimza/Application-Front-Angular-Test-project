@@ -1,0 +1,125 @@
+<div class="cont">
+
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title ">Simple Table</h4>
+                            <p class="card-category"> Here is a subtitle for this table {{varhome}}</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                        <th>
+                                            ID
+                                        </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Lastname
+                                        </th>
+                                        <th>
+                                            Phone
+                                        </th>
+                                        <th>
+                                            Delete
+                                        </th>
+                                        <th>
+                                            Edit
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let contact of ContactsTab let i= index">
+                                            <td>{{contact.id}}</td>
+
+
+                                            <td>{{contact.nom}}</td>
+
+                                            <td>{{contact.prenom}}</td>
+
+                                            <td>{{contact.tel}}</td>
+
+
+                                            <td>
+                                                <button (click)="deleteContact(contact.id)"
+                                                    class="btn btn-danger btn-sm mr-1"><i
+                                                        class="fa fa-trash"></i></button>
+
+
+
+                                            </td>
+                                            <td><button (click)="open(mymodal)" (click)="editTask(contact,i)"
+                                                    class="btn btn-warning btn-sm mr-1"><i
+                                                        class="fa fa-edit"></i></button></td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Edit modal -->
+
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="col-md-6 mx-auto">
+
+            <form method="post">
+                <div class="form-group">
+                    <label for="Nom">Nom</label>
+                    <input [(ngModel)]="upContact.nom" name="Nom" type="text" class="form-control" id="Nom"
+                        placeholder="Enter Nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="Prenom">Prenom</label>
+                    <input [(ngModel)]="upContact.prenom" name="Prenom" type="text" class="form-control" id="Prenom"
+                        placeholder="Enter Prenom" required>
+                </div>
+                <div class="form-group">
+                    <label for="Tel">Tel</label>
+                    <input [(ngModel)]="upContact.tel" name="Tel" type="number" class="form-control" id="Tel"
+                        placeholder="Enter Tel" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">status</label>
+                    <select [(ngModel)]="upContact.status" class="form-select" aria-label="Default select example">
+                        <option selected>select status</option>
+                        <option value="active">active</option>
+                        <option value="inactive">inactive</option>
+                        <option value="inconnu">inconnu</option>
+                    </select>
+
+                </div>
+                <button (click)="updateContact()" class="btn btn-primary" (click)="modal.dismiss('Cross click')"><i
+                        class="fas fa-refresh"></i>
+                    Update
+                    Contact</button>
+
+            </form>
+
+
+
+            <!-- {{upContact | json}} -->
+
+
+
+        </div>
+    </div>
+
+</ng-template>

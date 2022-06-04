@@ -1,0 +1,28 @@
+<div *ngIf="currentuser" class="sidebar" data-color="danger" data-background-color="white"
+    data-image="./assets/img/sidebar-1.jpg">
+
+
+    <div class="logo">
+        <a href="https://www.creative-tim.com" class="simple-text">
+            <div class="logo-img">
+                <img src="/assets/IndatacoreIdentity_Dark.png" />
+            </div>
+            INDATACORE
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+
+        <ul class="nav">
+            <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+                <a class="nav-link" [routerLink]="[menuItem.path]">
+                    <i class="material-icons">{{menuItem.icon}}</i>
+                    <p>{{menuItem.title}}</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="logout()"><i class="fa fa-sign-out"></i>Se déconnecter</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sidebar-background" style="background-image: url(./assets/img/sidebar-4.jpg)"></div>
+</div>
